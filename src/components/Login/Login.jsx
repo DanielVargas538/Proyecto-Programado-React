@@ -1,7 +1,7 @@
 import React, { useState }  from "react";
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getFetch } from '../../commons/ApiMethods';
+import { getFetchLogin } from '../../commons/ApiMethods';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -12,24 +12,21 @@ function Login() {
 
     const navigate = useNavigate();
 
+  
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
-            let found = false;
-            getFetch('user_logs')
-            .then((data) => {
-                data.forEach((user) => {
-                    if (user.email === email && user.password === password && !found) {
-                        setMessage('Sesion iniciada correctamente');
-                        setTimeout(() => {
-                            navigate('/');
-                        }, 2000);
-                        found = true;
-                    } 
-                    if (!found) {
-                        setMessage('No se encontró ningún correo coincidente');
-                    }}
-            )})
+            getFetchLogin('user_logs/params',`${email}`)
+            .then((response) => {
+              console.log(response)
+              if(response === 200){
+                setMessage('Sesion Iniciada Con exito');
+                setTimeout(() => {
+                    navigate('/');
+                }, 2000);
+              }else{
+                setMessage('Usuario no encontrado');
+              }})
         }catch(error){
           console.log(error);
         }

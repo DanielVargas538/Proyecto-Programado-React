@@ -4,6 +4,11 @@ export async function getFetch(path){
     return await response.json();
 }
 
+export async function getFetchLogin(path, email){
+    let response = await fetch(`${process.env.REACT_APP_API_URL}/${path}/${email}`)
+    return response.status;
+}
+
 export async function postFetch(path, body){
     let response = await fetch(`${process.env.REACT_APP_API_URL}/${path}`, {
         method: "POST",

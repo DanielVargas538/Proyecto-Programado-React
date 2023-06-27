@@ -11,12 +11,11 @@ function Login() {
     const [message, setMessage] = useState('');
 
     const navigate = useNavigate();
-
   
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
-            getFetchLogin('user_logs/params',`${email}`)
+            getFetchLogin('user_logs/params',`${email}`,`${password}`)
             .then((response) => {
               console.log(response)
               if(response === 200){

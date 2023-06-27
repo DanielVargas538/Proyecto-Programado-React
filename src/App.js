@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from "react";
 import './App.css';
 import Navbar from './components/SidebarData/Navbar';
 import {
@@ -10,17 +10,21 @@ import Home from './pages/Home';
 import Log from './pages/Log';
 
 function App() {
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
-    <>
+    <div>
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/' exact element={<Home />} />
           <Route path='/login' exact element={<Log />} />
+          <Route path="/" exact element={<Home />}/>
         </Routes>
       </Router>
-    </>
+    </div>
   );
 }
+
 
 export default App;

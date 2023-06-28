@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 
-function Navbar() {
+function Navbar({ setIsLoggedIn }) {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -18,6 +20,9 @@ function Navbar() {
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+          <button className=" signup" onClick={() => { setIsLoggedIn(false); localStorage.setItem('isLoggedIn', 'false'); navigate('/login'); }}>
+            Cerrar Sesión
+          </button>        
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>

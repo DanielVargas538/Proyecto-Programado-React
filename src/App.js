@@ -4,27 +4,38 @@ import Navbar from './components/SidebarData/Navbar';
 import {
   BrowserRouter as Router,
   Route,
-  Routes
+  Routes,
+  Navigate
 } from 'react-router-dom';
 import Home from './pages/Home';
-import Log from './pages/Log';
+import Log from './components/Login/Login';
 
 function App() {
-  
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const storedLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const [isLoggedIn, setIsLoggedIn] = useState(storedLoggedIn);
 
   return (
-    <div>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/login' exact element={<Log />} />
-          <Route path="/" exact element={<Home />}/>
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      {isLoggedIn ? (
+        <div>
+          <Navbar setIsLoggedIn={setIsLoggedIn}/>
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+          </Routes>
+        </div>
+      ) : (
+        <>
+          <Navigate to="/login" />
+          <Routes>
+            <Route path="/login" exact element={<Log setIsLoggedIn={setIsLoggedIn}/>} />
+          </Routes>
+        </>
+      )}
+    </Router>
   );
+    
 }
+
 
 
 export default App;

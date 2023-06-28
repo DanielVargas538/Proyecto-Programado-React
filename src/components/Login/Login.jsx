@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { getFetchLogin } from '../../commons/ApiMethods';
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function Login({setIsLoggedIn}) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,12 +17,13 @@ function Login() {
         try{
             getFetchLogin('user_logs/params',`${email}`,`${password}`)
             .then((response) => {
-              console.log(response)
               if(response === 200){
                 setMessage('Sesion Iniciada Con exito');
                 setTimeout(() => {
+                    setIsLoggedIn(true)
+                    localStorage.setItem('isLoggedIn', 'true');
                     navigate('/');
-                }, 2000);
+                }, 1000);
               }else{
                 setMessage('Usuario no encontrado');
               }})

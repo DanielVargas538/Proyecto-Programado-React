@@ -11,6 +11,15 @@
     font-size: 2rem;
     background: none;
   }
+
+  .signup{
+    margin-right: 40px;
+    color: white;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 20px;
+  }
   
   .nav-menu {
     background-color: #060b26;

@@ -1,5 +1,5 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 const List = ({ contents }) => {
     if (!contents || contents.length === 0) return <p>No hay contenidos</p>

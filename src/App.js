@@ -10,6 +10,10 @@ import {
 import Home from './pages/Home';
 import Log from './components/Login/Login';
 
+function openConecction(){
+  return new WebSocket('ws://localhost:3000/cable')
+}
+
 function App() {
   const storedLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   const [isLoggedIn, setIsLoggedIn] = useState(storedLoggedIn);

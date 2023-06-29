@@ -1,17 +1,3 @@
-import { createConsumer } from 'actioncable';
-
-/*const cable = createConsumer('ws://localhost:3000/cable'); 
-
-function subscribeToChannel(channelName, callback) {
-  const channel = cable.subscriptions.create(channelName, {
-    received(data) {
-      callback(data);
-    },
-  });
-
-  return channel;
-}*/
-
 export async function getFetch(path) {
   const response = await fetch(`${process.env.REACT_APP_API_URL}/${path}`);
   return await response.json();
@@ -53,6 +39,3 @@ export async function deleteFetch(path) {
   return await response.json();
 }
 
-/*export function subscribeToOrderChannel(callback) {
-  return subscribeToChannel('OrderChannel', callback);
-}*/

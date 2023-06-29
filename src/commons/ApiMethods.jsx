@@ -6,7 +6,6 @@ export async function getFetch(path){
 
 export async function getFetchLogin(path, email, password){
     let response = await fetch(`${process.env.REACT_APP_API_URL}/${path}/${email}/${password}`)
-    console.log(`${process.env.REACT_APP_API_URL}/${path}/${email}/${password}`)
     return response.status;
 }
 

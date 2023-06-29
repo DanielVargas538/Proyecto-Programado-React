@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import Index from '../components/Orders';
+import Order from '../components/Orders/Order';
 
 function Home() {
   const [refresh, setRefresh] = useState(true);
 
   return (
     <div className=''>
-      <Index refresh={refresh} setRefresh={setRefresh}/>  
+      <Order refresh={refresh} setRefresh={setRefresh}/>  
     </div>
   );
 }

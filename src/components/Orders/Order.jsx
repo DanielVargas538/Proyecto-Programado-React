@@ -21,7 +21,6 @@ function Index ({refresh, setRefresh}){
  
       return (
         <>
-            <h2 style={{margin: "4px"}}>Conexion con API local</h2>
             <LoadingList isLoading={loading} contents={contents} setRefresh={setRefresh} />
         </>
       );

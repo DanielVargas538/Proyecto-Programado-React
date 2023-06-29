@@ -17,12 +17,12 @@ function App() {
   return (
     <Router>
       {isLoggedIn ? (
-        <div>
+        <>
           <Navbar setIsLoggedIn={setIsLoggedIn}/>
           <Routes>
             <Route path="/" exact element={<Home />} />
           </Routes>
-        </div>
+        </>
       ) : (
         <>
           <Navigate to="/login" />

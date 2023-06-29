@@ -7,7 +7,6 @@ function Home() {
   return (
     <div className=''>
       <Index refresh={refresh} setRefresh={setRefresh}/>  
-    
     </div>
   );
 }

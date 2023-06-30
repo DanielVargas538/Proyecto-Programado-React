@@ -1,29 +1,32 @@
 import React, {useState, useEffect} from 'react';
-import { getFetch} from '../../commons/ApiMethods';
 import WithLoadingState from '../../commons/WithLoadingState';
 import List from '../../commons/List';
+import Cable from '../../commons/Cable'
 
-function Index ({refresh, setRefresh}){
+export function Index() {
+  const LoadingList = WithLoadingState(List);
+  const [contents, setContents] = useState([]);
+  const [loading, setLoading] = useState(false);
   
-    const LoadingList = WithLoadingState(List);
-    const [contents, setContents] = useState([]);
-    const [loading, setLoading] = useState(false);
+  useEffect(() => {
 
-    useEffect(() => {
-        if (!refresh) return;
-        setLoading(true);  
-        getFetch('orders/filter').then((data) => {
-          setContents(data);
-          setLoading(false);
-        });
-        setRefresh(false);
-      }, [setContents, setLoading, refresh, setRefresh])
- 
-      return (
-        <>
-            <LoadingList isLoading={loading} contents={contents} setRefresh={setRefresh} />
-        </>
-      );
+    const channel = Cable.subscriptions.create('OrderChannel', {
+    received(data) {
+
+      setContents(JSON.parse(data.order_data));
+      setLoading(false);
+      },
+    });
+
+  }, [ setContents, setLoading, ]);
+
+  return (
+    <>
+      <h2 style={{ margin: '4px' }}>Conexion con API local</h2>
+      <LoadingList isLoading={loading} contents={contents}  />
+    </>
+  );
 }
+
 
 export default Index;

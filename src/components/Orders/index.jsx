@@ -28,10 +28,10 @@ export function Index({ refresh, setRefresh }) {
       },
     });
 
-    return () => {
+    /*return () => {
       // Desconecta el canal al desmontar el componente
       channel.unsubscribe();
-    };
+    };*/
   }, [refresh, setContents, setLoading, setRefresh]);
 
   return (

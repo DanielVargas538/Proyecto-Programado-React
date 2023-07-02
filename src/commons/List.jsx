@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import OrderStateDelivered from '../components/Orders/OrderStateDelivered'
 import OrderStateBack from '../components/Orders/OrderStateBack'
 
 const List = ({ contents }) => {
+
+
+    console.log(contents)
     if (!contents || contents.length === 0) return <p>No hay Ordenes</p>
 
     const getStateLabel = (state) => {
@@ -27,21 +30,25 @@ const List = ({ contents }) => {
                     <th style={{padding: "0 4em 0 4em"}}>Fecha</th>
                     <th style={{padding: "0 4em 0 4em"}}>Estado</th>
                     <th style={{padding: "0 4em 0 4em"}}>Plato</th>
-                    <th style={{padding: "0 4em 0 4em"}}>Descripcion</th>
+                    <th style={{padding: "0 4em 0 4em"}}>Foto</th>
                     <th style={{padding: "0 4em 0 4em"}}>Cliente</th>
-                    <th/>
+                    <th/> 
                     <th/>
                     </tr>
                 </thead>
                 <tbody>
-                    {contents.map(({id, date, state, dish: {name, description}, client: {full_name}}) => (
+                    {contents.map(({id, date, state, dish: {name, description, photo_url}, client: {first_name ,last_name}}) => (
                     <tr>
                         <td>{id}</td>
                         <td>{date}</td>
                         <td>{getStateLabel(state)}</td>
-                        <td>{name}</td>
-                        <td>{description}</td>
-                        <td>{full_name}</td>
+                        <td>
+                            {name}:
+                            <br/>
+                            {description}
+                        </td>
+                        <td><img src={photo_url} alt="Image" style={{ width: '100px' }} /></td>
+                        <td>{first_name} {last_name}</td>
                         <td>
                             <OrderStateDelivered id={id} state={state} />
                         </td>

@@ -22,7 +22,7 @@ function OrderStateBack () {
 
     return (       
         <form onSubmit={handleEditStateBack}>
-            <button className='btn btn-success' type = 'submit'>Recuperar</button>
+            <button className='btn btn-success' type = 'submit'>Recuperar Ultima Orden</button>
         </form>
     );
 }

@@ -2,60 +2,56 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import OrderStateDelivered from '../components/Orders/OrderStateDelivered'
 import OrderStateBack from '../components/Orders/OrderStateBack'
-
+import './List.css'
 const List = ({ contents }) => {
-
 
     console.log(contents)
     if (!contents || contents.length === 0) return <p>No hay Ordenes</p>
 
     const getStateLabel = (state) => {
+        let label = "";
+        let color = "";
+      
         if (state === 0) {
-            return "A tiempo";
+          label = "A tiempo";
+          color = "green";
         } else if (state === 1) {
-            return "Sobre Tiempo";
+          label = "Sobre Tiempo";
+          color = "gold";
         } else if (state === 2) {
-            return "Demorado";
+          label = "Demorado";
+          color = "red";
         }
-    }
+      
+        return <span style={{ color }}>{label}</span>;
+      };
     
     return (
         <div>
-            <h2 style={{margin: "4px"}}>Estas son las Ordenes:</h2>
-            <OrderStateBack />
-            <table className="table table-striped-columns">
-                <thead>
-                    <tr>
-                    <th style={{padding: "0 4em 0 4em"}}>id</th>
-                    <th style={{padding: "0 4em 0 4em"}}>Fecha</th>
-                    <th style={{padding: "0 4em 0 4em"}}>Estado</th>
-                    <th style={{padding: "0 4em 0 4em"}}>Plato</th>
-                    <th style={{padding: "0 4em 0 4em"}}>Foto</th>
-                    <th style={{padding: "0 4em 0 4em"}}>Cliente</th>
-                    <th/> 
-                    <th/>
-                    </tr>
-                </thead>
+            <h2 className='title'>Ordenes Pendientes:</h2>
+            <div className='btn-recover'>
+                <OrderStateBack />
+            </div>
                 <tbody>
                     {contents.map(({id, date, state, dish: {name, description, photo_url}, client: {first_name ,last_name}}) => (
-                    <tr>
-                        <td>{id}</td>
-                        <td>{date}</td>
-                        <td>{getStateLabel(state)}</td>
-                        <td>
-                            {name}:
-                            <br/>
-                            {description}
-                        </td>
-                        <td><img src={photo_url} alt="Image" style={{ width: '100px' }} /></td>
-                        <td>{first_name} {last_name}</td>
-                        <td>
-                            <OrderStateDelivered id={id} state={state} />
-                        </td>
-                    </tr>
+                    <div class='box'>
+                        <div class='card'>
+                            <img class='img' src={photo_url} alt='Photo'/>
+                        </div>
+                        <div class='info'>
+                            <h1>{name}</h1>
+                            <h2>{getStateLabel(state)}</h2>
+                            <p>{description}</p>
+                            <p>{date}</p>
+                            <p>{first_name} {last_name}</p>
+                            <div class='btn-delivered'>
+                                <OrderStateDelivered id={id} state={state} />
+                            </div>
+                        </div>
+                    </div>
+                    
                 ))}
                 </tbody>
-            </table>
         </div>
     )
 }

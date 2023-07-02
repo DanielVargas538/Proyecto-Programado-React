@@ -1,0 +1,71 @@
+.title {
+    margin-top: 30px;
+    font-family: cursive;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-recover{
+    margin-top: 20px;
+    text-align: center;
+}
+
+tbody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.box{
+    height: 510px;
+    box-shadow:0 0 7px #000000 ;
+    margin: 30px 30px;
+    background-color: rgb(211, 211, 204);
+}
+
+.card{
+    height: 200px;
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: rgb(0, 0, 0);
+}
+
+.img{
+    margin: auto;
+    display: block;
+    height: 198px;
+    width: 300px;
+}
+
+.info{
+    height: 60px;
+    width: 100%;
+}
+
+.info h1{
+    font-family: sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+}
+
+.info h2{
+    font-family: sans-serif;
+    font-size: 1.0em;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+}
+
+.info p{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: .9em;
+    color: #555;
+}
+
+.btn-delivered{
+    text-align: center;
+}

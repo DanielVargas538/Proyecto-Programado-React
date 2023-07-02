@@ -4,7 +4,7 @@ import Order from '../components/Orders/Order';
 function Home() {
   
   return (
-    <div className=''>
+    <div className='home'>
       <Order />  
     </div>
   );

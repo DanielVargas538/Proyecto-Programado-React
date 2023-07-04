@@ -3,6 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import OrderStateDelivered from '../components/Orders/OrderStateDelivered'
 import OrderStateBack from '../components/Orders/OrderStateBack'
 import './List.css'
+import dayjs from 'dayjs';
+import 'dayjs/locale/es-mx';
+
+
+dayjs.locale('es-mx');
+
 const List = ({ contents }) => {
 
     console.log(contents)
@@ -12,13 +18,13 @@ const List = ({ contents }) => {
         let label = "";
         let color = "";
       
-        if (state === 0) {
+        if (state === "on_time") {
           label = "A tiempo";
           color = "green";
-        } else if (state === 1) {
+        } else if (state === "late") {
           label = "Sobre Tiempo";
           color = "gold";
-        } else if (state === 2) {
+        } else if (state === "delayed") {
           label = "Demorado";
           color = "red";
         }
@@ -42,7 +48,8 @@ const List = ({ contents }) => {
                             <h1>{name}</h1>
                             <h2>{getStateLabel(state)}</h2>
                             <p>{description}</p>
-                            <p>{date}</p>
+                            <p>Día: {dayjs(date).format('dddd')}</p>
+                            <p>Hora: {dayjs(date).format('HH:mm')}</p>
                             <p>{first_name} {last_name}</p>
                             <div class='btn-delivered'>
                                 <OrderStateDelivered id={id} state={state} />

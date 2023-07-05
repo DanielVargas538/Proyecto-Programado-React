@@ -20,7 +20,7 @@ function Navbar({ setIsLoggedIn }) {
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <button className=" signup" onClick={() => { setIsLoggedIn(false); localStorage.setItem('isLoggedIn', 'false'); navigate('/login'); }}>
+          <button className=" signup" onClick={() => { setIsLoggedIn(false); sessionStorage.setItem('isLoggedIn', 'false'); navigate('/login'); }}>
             Cerrar Sesión
           </button>        
         </div>

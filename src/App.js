@@ -11,7 +11,7 @@ import Home from './pages/Home';
 import Log from './components/Login/Login';
 
 function App() {
-  const storedLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const storedLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
   const [isLoggedIn, setIsLoggedIn] = useState(storedLoggedIn);
 
   return (

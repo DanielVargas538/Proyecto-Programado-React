@@ -19,9 +19,9 @@ function Login({setIsLoggedIn}) {
             .then((response) => {
               if(response === 200){
                 setMessage('Sesion Iniciada Con exito');
+                setIsLoggedIn(true)
+                sessionStorage.setItem('isLoggedIn', 'true');
                 setTimeout(() => {
-                    setIsLoggedIn(true)
-                    localStorage.setItem('isLoggedIn', 'true');
                     navigate('/');
                 }, 1000);
               }else{

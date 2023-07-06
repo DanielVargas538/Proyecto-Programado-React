@@ -13,7 +13,8 @@
   }
 
   .signup{
-    margin-right: 40px;
+    margin-right: auto;
+    margin-left: auto;
     color: white;
     background: none;
     border: none;

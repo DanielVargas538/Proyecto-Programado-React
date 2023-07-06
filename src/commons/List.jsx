@@ -39,7 +39,7 @@ const List = ({ contents }) => {
                 <OrderStateBack />
             </div>
                 <tbody>
-                    {contents.map(({id, date, state, dish: {name, description, photo_url}, client: {first_name ,last_name}}) => (
+                    {contents.map(({id, date, state, quantity ,dish: {name, description, photo_url}, client: {first_name ,last_name}}) => (
                     <div class='box'>
                         <div class='card'>
                             <img class='img' src={photo_url} alt='Photo'/>
@@ -48,6 +48,7 @@ const List = ({ contents }) => {
                             <h1>{name}</h1>
                             <h2>{getStateLabel(state)}</h2>
                             <p>{description}</p>
+                            <p>Cantidad {quantity}</p>
                             <p>Día: {dayjs(date).format('dddd')}</p>
                             <p>Hora: {dayjs(date).format('HH:mm')}</p>
                             <p>{first_name} {last_name}</p>

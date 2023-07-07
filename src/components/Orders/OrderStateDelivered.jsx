@@ -10,9 +10,9 @@ function OrderStaterDelivered ({ id, state }) {
         try{
         await putFetch(`orders/${id}`, { state: 4 })
         .then(() => {
-            localStorage.setItem('stateBack', `${state}`);
-            localStorage.setItem('idBack', `${id}`);
-            console.log(`${localStorage.getItem('idBack')}`)
+            sessionStorage.setItem('stateBack', `${state}`);
+            sessionStorage.setItem('idBack', `${id}`);
+            console.log(`${sessionStorage.getItem('idBack')}`)
         })
         }catch(error){
             console.log(error)

@@ -10,10 +10,12 @@ function OrderStateBack () {
     const handleEditStateBack = async (event) =>{
         event.preventDefault();
         try{
-        await putFetch(`orders/${localStorage.getItem('idBack')}`, { state: `${localStorage.getItem('stateBack')}` })
+        await putFetch(`orders/${sessionStorage.getItem('idBack')}`, { state: `${sessionStorage.getItem('stateBack')}`, module:0 })
         .then(() => {
             setMessage('Orden Recuperada');
-            console.log(`${localStorage.getItem('idBack')}`);
+            sessionStorage.setItem('idBack', 0)
+            sessionStorage.setItem('stateBack', 0)
+            console.log(`${sessionStorage.getItem('idBack')}`);
         })
         }catch(error){
         console.log(error)

@@ -10,9 +10,11 @@ import 'dayjs/locale/es-mx';
 dayjs.locale('es-mx');
 
 const List = ({ contents }) => {
-
-    console.log(contents)
-    if (!contents || contents.length === 0) return <p>No hay Ordenes</p>
+    const orders = contents.orders;
+    const ordersCount = contents.orders_count;
+    console.log(ordersCount)
+    console.log(orders)
+    if (!orders || orders.length === 0) return <p>No hay Ordenes</p>
 
     const getStateLabel = (state) => {
         let label = "";
@@ -39,7 +41,7 @@ const List = ({ contents }) => {
                 <OrderStateBack />
             </div>
                 <tbody>
-                    {contents.map(({id, date, state, quantity ,dish: {name, description, photo_url}, client: {first_name ,last_name}}) => (
+                    {orders.map(({id, date, state, quantity ,dish: {name, photo_url}, client: {first_name ,last_name}}) => (
                     <div class='box'>
                         <div class='card'>
                             <img class='img' src={photo_url} alt='Photo'/>
@@ -47,7 +49,6 @@ const List = ({ contents }) => {
                         <div class='info'>
                             <h1>{name}</h1>
                             <h2>{getStateLabel(state)}</h2>
-                            <p>{description}</p>
                             <p>Cantidad {quantity}</p>
                             <p>Día: {dayjs(date).format('dddd')}</p>
                             <p>Hora: {dayjs(date).format('HH:mm')}</p>

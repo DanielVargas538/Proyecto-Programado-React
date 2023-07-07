@@ -12,8 +12,6 @@ dayjs.locale('es-mx');
 const List = ({ contents }) => {
     const orders = contents.orders;
     const ordersCount = contents.orders_count;
-    console.log(ordersCount)
-    console.log(orders)
     if (!orders || orders.length === 0) return <p>No hay Ordenes</p>
 
     const getStateLabel = (state) => {
@@ -36,6 +34,7 @@ const List = ({ contents }) => {
     
     return (
         <div>
+            <div>Ordenes faltantes: {ordersCount}</div>
             <h2 className='title'>Ordenes Pendientes:</h2>
             <div className='btn-recover'>
                 <OrderStateBack />

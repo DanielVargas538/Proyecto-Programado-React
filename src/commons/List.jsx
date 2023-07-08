@@ -34,11 +34,12 @@ const List = ({ contents }) => {
     
     return (
         <div>
-            <div>Ordenes faltantes: {ordersCount}</div>
-            <h2 className='title'>Ordenes Pendientes:</h2>
+            <br/>
+            <div className='legend'>Ordenes faltantes: {ordersCount}</div>
             <div className='btn-recover'>
-                <OrderStateBack />
+                <OrderStateBack /> 
             </div>
+            
                 <tbody>
                     {orders.map(({id, date, state, quantity ,dish: {name, photo_url}, client: {first_name ,last_name}}) => (
                     <div class='box'>
